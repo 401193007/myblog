@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/401193007/myblog/issues"
   },
-  "homepage": "https://github.com/401193007/myblog#readme"
+  "homepage": "https://github.com/401193007/myblog#readme",
+  "dependencies": {
+    "ejs": "^2.5.7",
+    "express": "^4.15.4",
+    "express-session": "^1.15.5"
+  }
 }
