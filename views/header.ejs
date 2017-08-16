@@ -2,10 +2,13 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+    <title><%= blog.title %></title>
+    <link rel="stylesheet" href="//cdn.bootcss.com/semantic-ui/2.1.8/semantic.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/semantic-ui/2.1.8/semantic.min.js"></script>	
 </head>
 <body>
-	<!-- 语法 <%- %> 直接不转义数据 -->
-	<%- include('components/nav') %>   
-	<%- include('components/nav-setting') %>
-	<%- include('components/notification') %>
+	<%- include('./components/nav') %>   
+	<%- include('./components/nav-setting') %>
+	<%- include('./components/notification') %>
