@@ -10,6 +10,9 @@ var config = require("./config/default.js")
 var routes = require('./routes/index.js');
 var pkg = require('./package.json');
 
+var winston = require('winston');
+var expressWinston = require('express-winston');
+
 var app = express(); //启动express
 
 // 设置模板目录
@@ -56,8 +59,34 @@ app.use(function (req, res, next) {
 	next();
 });
 
-// 路由
+// 路由  routes(app);
+app.use(expressWinston.loggger({
+	transports: [
+		new (winston.transports.Console)({
+		  json: true,
+		  colorize: true
+		}),
+		new winston.transports.File({
+		  filename: 'logs/success.log'
+		})
+	]	
+}));
+
 routes(app);
+
+// 错误请求的日志
+app.use(expressWinston.errorLogger({
+  transports: [
+    new winston.transports.Console({
+      json: true,
+      colorize: true
+    }),
+    new winston.transports.File({
+      filename: 'logs/error.log'
+    })
+  ]
+}));
+
 
 // error page
 app.use(function (err, req, res, next) {
